@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Python.EmbeddingTest</name>
+    </assembly>
+    <members>
+        <member name="M:Python.EmbeddingTest.DynamicTest.AssignObject">
+            <summary>
+            Set the attribute of a PyObject with a .NET object.
+            </summary>
+        </member>
+        <member name="M:Python.EmbeddingTest.DynamicTest.AssignNone">
+            <summary>
+            Set the attribute of a PyObject to null.
+            </summary>
+        </member>
+        <member name="M:Python.EmbeddingTest.DynamicTest.AssignPyObject">
+            <summary>
+            Check whether we can get the attr of a python object when the
+            value of attr is a PyObject.
+            </summary>
+            <remarks>
+            FIXME: Issue on Travis PY27: Error : Python.EmbeddingTest.dynamicTest.AssignPyObject
+            Python.Runtime.PythonException : ImportError : /home/travis/virtualenv/python2.7.9/lib/python2.7/lib-dynload/_io.so: undefined symbol: _PyLong_AsInt
+            </remarks>
+        </member>
+        <member name="M:Python.EmbeddingTest.DynamicTest.PassObjectInPython">
+            <summary>
+            Pass the .NET object in Python side.
+            </summary>
+        </member>
+        <member name="M:Python.EmbeddingTest.DynamicTest.PassPyObjectInNet">
+            <summary>
+            Pass the PyObject in .NET side
+            </summary>
+        </member>
+        <member name="T:Python.EmbeddingTest.PyImportTest">
+            <summary>
+            Test Import unittests and regressions
+            </summary>
+            <remarks>
+            Keeping in old-style SetUp/TearDown due to required SetUp.
+            The required directory structure was added to .\pythonnet\src\embed_tests\fixtures\ directory:
+            + PyImportTest/
+            | - __init__.py
+            | + test/
+            | | - __init__.py
+            | | - one.py
+            </remarks>
+        </member>
+        <member name="M:Python.EmbeddingTest.PyImportTest.TestDottedName">
+            <summary>
+            Test subdirectory import
+            </summary>
+        </member>
+        <member name="M:Python.EmbeddingTest.PyImportTest.TestSysArgsImportException">
+            <summary>
+            Tests that sys.args is set. If it wasn't exception would be raised.
+            </summary>
+        </member>
+        <member name="M:Python.EmbeddingTest.PyImportTest.TestCastGlobalVar">
+            <summary>
+            Test Global Variable casting. GH#420
+            </summary>
+        </member>
+        <member name="M:Python.EmbeddingTest.PyInitializeTest.StartAndStopTwice">
+            <summary>
+            Tests issue with multiple simple Initialize/Shutdowns.
+            Fixed by #343
+            </summary>
+        </member>
+        <member name="M:Python.EmbeddingTest.PyInitializeTest.ReInitialize">
+            <summary>
+            Failing test demonstrating current issue with OverflowException (#376)
+            and ArgumentException issue after that one is fixed.
+            More complex version of StartAndStopTwice test
+            </summary>
+        </member>
+        <member name="T:Python.EmbeddingTest.TestPyFloat">
+            <remarks>
+            PyFloat implementation isn't complete, thus tests aren't complete.
+            </remarks>
+        </member>
+        <member name="M:Python.EmbeddingTest.TestPythonEngineProperties.GetPythonHomeDefault">
+            <summary>
+            Test default behavior of PYTHONHOME. If ENVVAR is set it will
+            return the same value. If not, returns EmptyString.
+            </summary>
+            <remarks>
+            AppVeyor.yml has been update to tests with ENVVAR set.
+            </remarks>
+        </member>
+        <member name="M:Python.EmbeddingTest.TestPyTuple.TestStringIsTupleType">
+            <summary>
+            Test IsTupleType without having to Initialize a tuple.
+            PyTuple constructor use IsTupleType. This decouples the tests.
+            </summary>
+        </member>
+        <member name="M:Python.EmbeddingTest.TestPyTuple.TestPyTupleIsTupleType">
+            <summary>
+            Test IsTupleType with Tuple.
+            </summary>
+        </member>
+        <member name="M:Python.EmbeddingTest.TestPyTuple.TestPyTupleInvalidAppend">
+            <summary>
+            Test PyTuple.Concat(...) doesn't let invalid appends happen
+            and throws and exception.
+            </summary>
+            <remarks>
+            Test has second purpose. Currently it generated an Exception
+            that the GC failed to remove often and caused AppDomain unload
+            errors at the end of tests. See GH#397 for more info.
+            <para />
+            Curious, on PY27 it gets a Unicode on the ex.Message. On PY3+ its string.
+            </remarks>
+        </member>
+        <member name="M:Python.EmbeddingTest.TestPyTuple.TestInvalidAsTuple">
+            <remarks>
+            TODO: Should this throw ArgumentError instead?
+            </remarks>
+        </member>
+    </members>
+</doc>
